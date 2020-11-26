@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>js0</title>
+    <style>
+    body {
+    background-color: #3b444b;
+    color: white;
+    }
+    #container {
+    width: 200px;
+    height:200px;
+    background: green;
+    position: relative;
+    }
+    #box {
+     width:70px;
+    height:5px;
+    background: cyan;
+    position: absolute;
+    }
+    </style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <div onclick="setRandomColor()" id="container">
+    <div id="box"> </div>
+    </div>
+<script>
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function setRandomColor() {
+  $("#container").css("background-color", getRandomColor());
+}
+
+    var t=setInterval(move, 10 / 60);
+    var posX=0;
+    var posY=0;
+    var box=document.getElementById("box");  
+    function move() {
+    if (posX>=0 && posX<130 && posY==0) {
+    posX+=1;
+    }
+    else if (posX==130 && posY==0) {
+    posX+=65;
+    $("#box").css("width", "5px");
+    $("#box").css("height", "70px");
+    }
+    else if (posX>=195 && posY>=0 && posY<130) {
+    posY+=1;
+    }
+    else if (posX==195 && posY==130) {
+    posY+=65;
+    posX-=65;
+    $("#box").css("width", "70px");
+    $("#box").css("height", "5px");
+    }
+    else if (posY==195 && posX<=130 && posX>=0) {
+    posX-=1;    
+    }
+    else if (posX<=0 && posY==195 && posY>0) {
+    posY-=65;
+    $("#box").css("width", "5px");
+    $("#box").css("height", "70px");
+    }
+    else if (posX<=0 && posY<=130 && posY>=0) {
+    posY-=1;
+    }
+    box.style.left=posX+"px";
+    box.style.top=posY+"px"; 
+    };
+    function meowfunc() {
+    alert("meow!");
+    }
+    function show() {
+    alert("Hi there");
+    }
+    
+</script>
+<p id="meow" onclick="meowfunc()">
+Click to meow!
+</p>
+<button onclick="show()">Click me</button>
+    </body>
+    </html>
+</html>
+        
+    

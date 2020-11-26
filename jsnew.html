@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>17</title>
+    <style>
+    body {
+    background-color: #414a4c;
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+  </head>
+  <body>
+<div>
+ <button onclick="prev()"> Prev </button>
+ <img id="slider" src="file:///home/deargo/meow/pictures/sky1.jpg" width="60%" height="60%" />
+ <button onclick="next()"> Next </button>
+</div>
+<script>
+
+var images=[
+    "file:///home/deargo/meow/pictures/sky1.jpg",
+    "file:///home/deargo/meow/pictures/sky2.jpg",
+    "file:///home/deargo/meow/pictures/sky3.jpg"
+    ];
+var num=0;
+function prev() {
+var slider=document.getElementById("slider")
+num--;
+if(num<0) {
+num=images.length-1;
+}
+slider.src=images[num];
+}
+function next() {
+var slider=document.getElementById("slider")
+num++;
+if(num>=images.length) {
+num=0; }
+slider.src=images[num];
+}
+</script>
+  </body>
+</html>
